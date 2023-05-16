@@ -1,5 +1,5 @@
 import "./App.css";
-import {React} from 'react'
+import React, {useState} from 'react'
 
 const api = {
   key: "9e277487a498b89532640100ddf00489",
@@ -7,6 +7,9 @@ const api = {
 }
 
 function App() {
+
+  const [query, setQuery] = useState('');
+  const [weather, setWeather] = useState({});
 
   const dateBuilder = (d) => {
     let months = ["January","February","March","April","May","June","July",
