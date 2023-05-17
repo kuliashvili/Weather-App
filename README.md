@@ -1,5 +1,8 @@
 # Weather-App
 
+![image](https://github.com/yulo01/Weather-App/assets/93291077/3137311d-eee7-4079-90a7-913c4ced950e)
+
+
 <h3>Description</h3>
 MyWebApp is a React-based web application that utilizes an API to retrieve and display data. With a clean and user-friendly interface, this application allows users to seamlessly interact with the provided data and experience a smooth browsing experience.
 
