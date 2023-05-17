@@ -11,6 +11,18 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
+  const search = evt => {
+    if(evt.Key === "Enter"){
+      fetch('${api.base}weather?q=${query}&units=metric&APPID=${api.key}')
+      .then(res => res.json())
+      .then(resoult => { 
+        setWeather(resoult)
+        setQuery('')
+        console.log(resoult)
+      })
+    }
+  }
+
   const dateBuilder = (d) => {
     let months = ["January","February","March","April","May","June","July",
             "August","September","October","November","December"];
@@ -30,16 +42,25 @@ function App() {
         <div className="search-box">
           <input type="text"
                  className="search-bar"
-                 placeholder="Search..." />
+                 placeholder="Search..." 
+                 onChange={e => setQuery(e.target.value)}
+                 value={query}
+                 onKeyPress={search}
+                 />
+                 
         </div>
-        <div className="location-box">
-          <div className="location">New York City, US</div>
+        {(typeof weather.main != "undefined") ? (
+          <div>
+                <div className="location-box">
+          <div className="location">{weather.name}, {weather.sys.country}</div>
           <div className="date">{dateBuilder(new Date())}</div>
         </div>
         <div className="weather-box">
           <div className="temp">15°</div>
           <div className="weather">Sunny</div>
         </div>
+          </div>
+        ) : ('')}
       </main>
     </div>
   );
